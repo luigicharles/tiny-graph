@@ -1,4 +1,4 @@
 # tiny-graph
-🦄  graphql-mongoatlas-python-server 
+🦄   graphql-mongoatlas-python-server 
 
-Lightweight uvicorn server, hosting a starlette graphql app. 
+Lightweight uvicorn server, hosting graphql in a starlette  app. 
