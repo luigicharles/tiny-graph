@@ -47,4 +47,4 @@ A fully configured docker-compose.yml and dockerfile is given in the top level d
 
 2) Assuming you have the requisite IAM permissions for CloudBuild,CloudRegistry and CloudRun you can then run in the top level:
 
-    gcloud builds submit
+        gcloud builds submit
