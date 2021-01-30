@@ -34,7 +34,7 @@ A fully configured docker-compose.yml and dockerfile is given in the top level d
 
 ## Deploying to GCP 
 
-1) Open the cloudbuild.yaml file and make the following substitutions to your usecase:
+1) Open the cloudbuild.yml file and make the following substitutions to your usecase:
 
         _GCP_PROJECT: '<your-project-name>'
         _GCP_REGION: 'us-east1'
