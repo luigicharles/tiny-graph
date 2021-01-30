@@ -12,10 +12,10 @@ graphql-mongodb-python
 
 2) Install python requirements to an enviroment of your choice: 
 
-    pip3 install -r ./requirements.txt
+        pip3 install -r ./requirements.txt
 
 3) Cd into ./src
 
-4) Run the following command: 
+4) To start the server run the following command: 
 
-    uvicorn main:app
+        uvicorn main:app
