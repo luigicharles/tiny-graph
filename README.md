@@ -14,7 +14,7 @@ graphql-mongodb-python
 
     pip3 install -r ./requirements.txt
 
-3) CD into ./src
+3) Cd into ./src
 
 4) Run the following command: 
 
