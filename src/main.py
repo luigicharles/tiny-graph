@@ -1,44 +1,27 @@
 import os
-import yaml
-
+import mongoengine
 from starlette.applications import Starlette
 from starlette.routing import Route
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from starlette.graphql import GraphQLApp
+from starlette.config import Config
+from api.schema import schema
 
-import mongoengine
-import graphene
+MONGO_URI = Config(os.path.join('config', '.mongo.env'))('MONGO_URI')
 
-from gql.schema import schema as gqlSchema
+mongoengine.connect("tiny-graph", host=MONGO_URI, alias="default")
 
-#config_path = os.path.join('app','config','app.yaml')
-#with open(config_path, "r") as yml_file:
-#    config = yaml.load(yml_file)['config']
+routes = [Route('/', GraphQLApp(schema=schema))]
 
-#MONGO_URI = config['services']['graphql']['mongo_uri']['federation_2']
-            
-MONGO_URI = ""
-
-mongoengine.connect("artemis-server", host=MONGO_URI, alias="default")
-
-routes     = [
-    Route('/', GraphQLApp(schema=gqlSchema))
-]
-
-# Middleware, everything is super open for developement. 
 middleware = [
-    # Cors Middleware.
+    Middleware(TrustedHostMiddleware, allowed_hosts=['*']),
     Middleware(CORSMiddleware,
-        allow_origins = ['*'],
-        allow_headers = ['*'],
-        allow_methods = ['*'],
-        allow_credentials=True
-        ),
-    # Makes us a Trusted website.
-    Middleware(TrustedHostMiddleware, allowed_hosts=['*'])
+               allow_origins=['*'],
+               allow_headers=['*'],
+               allow_methods=['*'],
+               allow_credentials=True)
 ]
 
-# Start Starlette app.
-app = Starlette(routes=routes,middleware=middleware)
+app = Starlette(routes=routes, middleware=middleware)
