@@ -18,13 +18,12 @@ class CreateUser(graphene.Mutation):
     def mutate(root, info, username, email):
         ok, user = False, None
         if len(list(UserModel.objects(username=username)))\
-        +  len(list(UserModel.objects(email=email))) == 0:
+        + len(list(UserModel.objects(email=email))) == 0:
             user = UserModel(
                 username=username,
                 email=email,
                 posts=[],
                 friends=[],
-                followers=[],
                 datetime_created=datetime.datetime.now())
             user.save()
             ok = True

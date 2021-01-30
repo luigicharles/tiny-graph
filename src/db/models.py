@@ -13,7 +13,6 @@ class User(Document):
     email = StringField()
     posts = ListField(ReferenceField('Post'))
     friends = ListField(ReferenceField('User'))
-    followers = ListField(ReferenceField('User'))
     datetime_created = DateTimeField()
 
 
