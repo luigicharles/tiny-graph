@@ -1,0 +1,9 @@
+version: "3"
+services:
+
+  tiny-graph:
+    build: ./
+    container_name: tiny-graph
+    restart: always
+    ports:
+      - 8001
