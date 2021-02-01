@@ -17,8 +17,9 @@ class CreateUser(graphene.Mutation):
 
     def mutate(root, info, username, email):
         ok, user = False, None
-        if len(list(UserModel.objects(username=username)))\
-        + len(list(UserModel.objects(email=email))) == 0:
+        current_users = list(UserModel.objects(username=username))\
+            + list(UserModel.objects(email=email))
+        if len(current_users) == 0:
             user = UserModel(
                 username=username,
                 email=email,
