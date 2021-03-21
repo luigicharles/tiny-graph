@@ -1,5 +1,5 @@
 # 🧬 tiny-graph
-graphql-mongodb-python 
+bolier plate python server to deploy a graphql endpoint with mongodb.
 
 ## Requirements
 
